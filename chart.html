@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChartJS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+            background-color: #ebebeb;
+        }
+
+        .card {
+            width: 40%;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <canvas id="lineChart"></canvas>
+        </div>
+
+        <div class="card">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const bar = document.getElementById('barChart');
+    const line = document.getElementById('lineChart');
+
+    new Chart(bar, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                borderWidth: 1,
+                backgroundColor: '#FF6384'
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                borderWidth: 1,
+                backgroundColor: '#36A2EB'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(line, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                borderWidth: 1,
+                backgroundColor: '#FF6384',
+                borderColor: '#FF6384'
+            },
+            {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                borderWidth: 1,
+                backgroundColor: '#36A2EB',
+                borderColor: '#36A2EB'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
